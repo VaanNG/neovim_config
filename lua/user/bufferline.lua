@@ -13,7 +13,7 @@ bufferline.setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-	indicator_icon = nil,
+    indicator_icon = nil,
     indicator = { style = "icon", icon = "▎"},
     buffer_close_icon = "",
     -- buffer_close_icon = '',
@@ -66,7 +66,7 @@ bufferline.setup {
     -- [focused and unfocused]. eg: { '|', '|' }
     separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
     --   -- add custom logic
     --   return buffer_a.modified > buffer_b.modified
@@ -74,8 +74,8 @@ bufferline.setup {
   },
   highlights = {
     fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
     background = {
       fg = { attribute = "fg", highlight = "TabLine" },

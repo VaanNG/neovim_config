@@ -45,6 +45,8 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+local select_opts = {behavior = cmp.SelectBehavior.Select}
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -52,8 +54,8 @@ cmp.setup {
     end,
   },
   mapping = {
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -67,7 +69,12 @@ cmp.setup {
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_next_item(
+          {
+            behavior = cmp.SelectBehavior,
+            select = false
+          }
+        )
       elseif luasnip.expandable() then
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
@@ -83,7 +90,12 @@ cmp.setup {
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.select_prev_item(
+          {
+            behavior = cmp.SelectBehavior,
+            select = false
+          }
+        )
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
@@ -116,7 +128,7 @@ cmp.setup {
     { name = "path" },
   },
   confirm_opts = {
-    behavior = cmp.ConfirmBehavior.Replace,
+    behavior = cmp.SelectBehavior,
     select = false,
   },
   window = {
@@ -129,3 +141,4 @@ cmp.setup {
     native_menu = false,
   },
 }
+
