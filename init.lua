@@ -11,6 +11,8 @@ require "user.cmp"
 require "user.lsp"
 --- Git
 require "user.gitsigns"
+--- Git Blame / Browser/ CMD in Vim
+require "user.git"
 --- Parser Generator Tool / Syntax Tree 
 require "user.treesitter"
 --- Brackets Completion
