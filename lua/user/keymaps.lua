@@ -73,4 +73,5 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", opts)
 keymap("n", "gk", "<Cmd>Lspsaga hover_doc<cr>", opts)
 keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<cr>", opts)
+keymap("n", "gj", "<Cmd>Lspsaga show_line_diagnostics<cr>", opts)
 
