@@ -71,4 +71,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- LSP Saga --
 keymap("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", opts)
+keymap("n", "gk", "<Cmd>Lspsaga hover_doc<cr>", opts)
+keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<cr>", opts)
 
