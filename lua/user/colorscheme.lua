@@ -10,7 +10,7 @@ require('nvim-tundra').setup({
   },
   syntax = {
     booleans = { bold = true, italic = true },
-    comments = { bold = true, italic = true },
+    comments = { bold = true, italic = true , fg = "#9A9A9A" },
     conditionals = {},
     constants = { bold = true },
     fields = {},
@@ -22,7 +22,7 @@ require('nvim-tundra').setup({
     punctuation = {},
     strings = {},
     types = { italic = true },
-    -- sidebars = "transparent",
+    sidebars = { bg = "#131A29" }
   },
   diagnostics = {
     errors = {},
@@ -40,7 +40,9 @@ require('nvim-tundra').setup({
   },
   overwrite = {
     colors = {},
-    highlights = {},
+    highlights = {
+      LineNr = { fg = "#fff6b8" }
+    },
   },
 })
 
