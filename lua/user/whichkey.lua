@@ -85,12 +85,12 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
-    "<cmd>FzfLua files<cr>",
-    "Find files",
+  f = {
+    name = "Fuzzy Finder",
+    f = { "<cmd>FzfLua files<cr>", "Find files" },
+    F = { "<cmd>FzfLua live_grep<cr>", "Find Text" },
+    g = { "<cmd>FzfLua git_commits<cr>" , "Find commits" }
   },
-  ["F"] = { "<cmd>FzfLua live_grep<cr>", "Find Text" },
-
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -99,9 +99,10 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-
-  ["P"] = { "<cmd>Prettier<cr>", "Prettier" },
-
+  F = {
+    name = "Formatter",
+    p ={ "<cmd>Prettier<cr>", "Prettier" },
+  },
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },

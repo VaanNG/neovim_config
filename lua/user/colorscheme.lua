@@ -22,7 +22,6 @@ require('nvim-tundra').setup({
     punctuation = {},
     strings = {},
     types = { italic = true },
-    sidebars = { bg = "#131A29" }
   },
   diagnostics = {
     errors = {},
@@ -41,7 +40,7 @@ require('nvim-tundra').setup({
   overwrite = {
     colors = {},
     highlights = {
-      LineNr = { fg = "#fff6b8" }
+      LineNr = { fg = "#fff6b8" },
     },
   },
 })
