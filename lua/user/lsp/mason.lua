@@ -1,5 +1,5 @@
 local servers = {
-	"sumneko_lua", -- lua
+	-- "sumneko_lua", -- lua
 	"tsserver", -- javascript, typescript and ...
   "tailwindcss", -- css
 	"pyright", -- python

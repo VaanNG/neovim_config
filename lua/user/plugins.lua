@@ -40,6 +40,10 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
+	-- Colorschemes
+  use { 'sam4llis/nvim-tundra' }
+
+  -- Cores
   use { "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" } -- Have packer manage itself
   use { "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" } -- Useful lua functions used by lots of plugins
   use { "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" } -- Autopairs, integrates with both cmp and treesitter
@@ -54,9 +58,6 @@ return packer.startup(function(use)
   use { "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6" } -- Indenting
   use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" } -- Fancy start screen for vim 
 	use {"folke/which-key.nvim"} -- UI box for leader key and commands
-
-	-- Colorschemes
-  use { 'sam4llis/nvim-tundra' }
 
 	-- Cmp 
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
