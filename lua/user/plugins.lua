@@ -84,7 +84,7 @@ return packer.startup(function(use)
   use { "MunifTanjim/prettier.nvim", commit = "918b99f5ddd7a56395fd393767ab6a3c15a50789" } -- Prettier plugin for Neovim's built-in LSP client.
 
   -- fzf-lua 
-  use { 'ibhagwan/fzf-lua', commit = "618c4de7d36b6c2a2f46794845e631fa6007bbfc" } -- Fuzzy finder 
+  use { 'ibhagwan/fzf-lua', commit = "f9d3b2dad735fd2b9d6a47fb1ee31d9411ab0a30" } -- Fuzzy finder 
 
 	-- Treesitter
 	use { "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac" } -- Syntax core
