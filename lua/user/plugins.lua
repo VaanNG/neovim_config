@@ -57,7 +57,7 @@ return packer.startup(function(use)
   use { "lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6" } -- Lazy loading
   use { "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6" } -- Indenting
   use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" } -- Fancy start screen for vim 
-	use {"folke/which-key.nvim"} -- UI box for leader key and commands
+	use {"folke/which-key.nvim", commit = "ce741eb559c924d72e3a67d2189ad3771a231414"} -- UI box for leader key and commands
 
 	-- Cmp 
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
@@ -68,7 +68,7 @@ return packer.startup(function(use)
 	use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
 
   -- wilder
-  use { 'gelguy/wilder.nvim' } -- command line completion
+  use { 'gelguy/wilder.nvim', commit = "86f5fb0962bc5954babf267ded6b144d992aef85" } -- command line completion
 
 	-- Snippets
   use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
@@ -81,17 +81,17 @@ return packer.startup(function(use)
 	use { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" } -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua. 
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" } -- Highlight same words on cursor 
   use { "glepnir/lspsaga.nvim", branch = "main" } -- UI upgrade for lsp
-  use { "MunifTanjim/prettier.nvim" } -- Prettier plugin for Neovim's built-in LSP client.
+  use { "MunifTanjim/prettier.nvim", commit = "918b99f5ddd7a56395fd393767ab6a3c15a50789" } -- Prettier plugin for Neovim's built-in LSP client.
 
   -- fzf-lua 
-  use { 'ibhagwan/fzf-lua' } -- Fuzzy finder 
+  use { 'ibhagwan/fzf-lua', commit = "618c4de7d36b6c2a2f46794845e631fa6007bbfc" } -- Fuzzy finder 
 
 	-- Treesitter
 	use { "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac" } -- Syntax core
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" } -- Git markers
-  use { "dinhhuy258/git.nvim" } -- For git blame and browser and running git cmd in vim
+  use { "dinhhuy258/git.nvim", commit = "6b4a66f8a66e567bf27a0ef1de72cf5e338df4c3" } -- For git blame and browser and running git cmd in vim
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
