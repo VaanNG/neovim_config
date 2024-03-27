@@ -52,7 +52,7 @@ return packer.startup(function(use)
   use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" } -- Icons
   use { "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" } -- File Explorer Bar
   use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" } -- Bufferline(tabs)
-	use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" } -- Closing buffer?
+  use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" } -- Closing buffer?
   use { "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" } -- Status line
   use { "lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6" } -- Lazy loading
   use { "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6" } -- Indenting
@@ -87,7 +87,7 @@ return packer.startup(function(use)
   use { 'ibhagwan/fzf-lua', commit = "f9d3b2dad735fd2b9d6a47fb1ee31d9411ab0a30" } -- Fuzzy finder 
 
 	-- Treesitter
-	use { "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac" } -- Syntax core
+	use { "nvim-treesitter/nvim-treesitter", commit = "ec97c5ec720da7b8bb5f53572c91c5b144ae0cae" } -- Syntax core
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" } -- Git markers

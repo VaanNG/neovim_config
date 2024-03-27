@@ -15,7 +15,7 @@ configs.setup({
     , "typescript"
     , "yaml"
     , "markdown"
-    , "markdown_inline" 
+    , "markdown_inline"
   }, -- one of "all" or a list of languages
 	ignore_install = { 
     "phpdoc"
