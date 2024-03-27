@@ -1,5 +1,5 @@
 local actions = require "fzf-lua.actions"
-require'fzf-lua'.setup {
+require'fzf-lua'.setup({
   -- fzf_bin         = 'sk',            -- use skim instead of fzf?
                                         -- https://github.com/lotabout/skim
   global_resume      = true,            -- enable global `resume`?
@@ -593,4 +593,4 @@ require'fzf-lua'.setup {
   -- uncomment if your terminal/font does not support unicode character
   -- 'EN SPACE' (U+2002), the below sets it to 'NBSP' (U+00A0) instead
   -- nbsp = '\xc2\xa0',
-}
+})
