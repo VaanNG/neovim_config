@@ -376,7 +376,9 @@ require'fzf-lua'.setup({
     actions = {
       -- actions inherit from 'actions.files' and merge
       -- this action toggles between 'grep' and 'live_grep'
-      ["ctrl-g"]      = { actions.grep_lgrep }
+      ["ctrl-g"]      = { actions.grep_lgrep },
+      -- uncomment to enable '.gitignore' toggle for grep
+      ["ctrl-r"]      = { actions.toggle_ignore },
     },
     no_header             = false,    -- hide grep|cwd header?
     no_header_i           = false,    -- hide interactive header?
