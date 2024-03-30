@@ -5,20 +5,21 @@ end
 
 configs.setup({
   ensure_installed = { 
-    "bash"
-    , "javascript"
+    "lua"
+    , "vim"
+    , "vimdoc"
+    , "bash"
     , "json"
-    , "lua"
-    , "python"
-    , "css"
-    , "java"
-    , "typescript"
     , "yaml"
     , "markdown"
     , "markdown_inline"
+    , "css"
+    , "javascript"
+    , "typescript"
+    , "python"
+    , "query"
   }, -- one of "all" or a list of languages
 	ignore_install = { 
-    "phpdoc"
   }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
