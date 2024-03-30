@@ -93,6 +93,11 @@ return packer.startup(function(use)
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" } -- Git markers
   use { "dinhhuy258/git.nvim", commit = "6b4a66f8a66e567bf27a0ef1de72cf5e338df4c3" } -- For git blame and browser and running git cmd in vim
 
+  -- AI Assitant
+  use { "zbirenbaum/copilot.lua", commit = "03f825956ec49e550d07875d867ea6e7c4dc8c00" } -- Github Copilot Lua 
+  use { "zbirenbaum/copilot-cmp", commit = "d427de01114f8d360de60f3eb569be52baf05d81", after = { "copilot.lua" }, config = function () require("copilot_cmp").setup() end } -- cmp-completion 
+  use { "AndreM222/copilot-lualine", commit = "f7f0b3b3e7b0183d65fb5416c1d3e210e8a67ba6" } -- lualine integration
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
