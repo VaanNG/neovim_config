@@ -67,7 +67,7 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm { select = false },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item(
@@ -114,21 +114,33 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
-        copilot = "[Copilot]",
+        path = "[Path]",
+        buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
+        copilot = "[Copilot]",
       })[entry.source.name]
       return vim_item
     end,
   },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
   sources = {
-    { name = "copilot" },
+    { name = "path" },
+    { name = "buffer" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "copilot" },
   },
   confirm_opts = {
     behavior = cmp.SelectBehavior,
