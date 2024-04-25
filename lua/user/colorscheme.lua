@@ -1,4 +1,9 @@
-require('nvim-tundra').setup({
+local status_ok, colorscheme = pcall(require, "nvim-tundra")
+if not status_ok then
+  return
+end
+
+colorscheme.setup({
   transparent_background = true,
   dim_inactive_windows = {
     enabled = false,
