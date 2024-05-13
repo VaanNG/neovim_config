@@ -39,3 +39,7 @@ require "user.autocommands"
 require "user.wilder"
 --- File / Text searcher
 require "user.fzf-lua"
+--- Notify
+require "user.notify"
+--- Obsidian 
+require "user.obsidian"
