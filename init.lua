@@ -45,4 +45,3 @@ require "user.notify"
 require "user.obsidian"
 --- Copilot
 require "user.copilot"
-require "user.copilot_cmp"

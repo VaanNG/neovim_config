@@ -3,6 +3,11 @@ if not status_ok then
 	return
 end
 
+local status_ok, copilot_lualine_spinners = pcall(require, "copilot-lualine.spinners")
+if not status_ok then
+	return
+end
+
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -19,7 +24,7 @@ local diagnostics = {
 
 local diff = {
 	"diff",
-	colored = false,
+	colored = true,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
   cond = hide_in_width
 }
@@ -68,7 +73,7 @@ local copilot = {
               unknown = "#FF5555" -- red
           }
       },
-  spinners = require("copilot-lualine.spinners").dots,
+  spinners = copilot_lualine_spinners.dots,
   spinner_color = "#6272A4", -- blue
 },
 show_colors = true,
