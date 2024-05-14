@@ -48,6 +48,33 @@ local location = {
 	padding = 0,
 }
 
+local copilot = {
+  "copilot",
+  -- Default values
+  symbols = {
+      status = {
+          icons = {
+              enabled = " :  ",
+              sleep = " :  ",   -- auto-trigger disabled
+              disabled = " :  ",
+              warning = " :  ",
+              unknown = " :  "
+          },
+          hl = {
+              enabled = "#7FFFD4", -- aquamarine
+              sleep = "#AEB7D0", -- grey
+              disabled = "#6272A4", -- blue
+              warning = "#FFB86C", -- orange
+              unknown = "#FF5555" -- red
+          }
+      },
+  spinners = require("copilot-lualine.spinners").dots,
+  spinner_color = "#6272A4", -- blue
+},
+show_colors = true,
+show_loading = true
+}
+
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
@@ -75,16 +102,21 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { 
+      copilot
+      , 'diff'
+      , spaces
+      , 'encoding'
+      , filetype 
+    },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
+		lualine_c = { filename },
+		lualine_x = { location },
 		lualine_y = {},
 		lualine_z = {},
 	},

@@ -43,3 +43,6 @@ require "user.fzf-lua"
 require "user.notify"
 --- Obsidian 
 require "user.obsidian"
+--- Copilot
+require "user.copilot"
+require "user.copilot_cmp"

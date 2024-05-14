@@ -42,11 +42,13 @@ local kind_icons = {
   Event = "",
   Operator = "",
   TypeParameter = "",
+  Copilot = ""
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
+-- startup cmp
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -117,15 +119,29 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        copilot = "[Copilot]",
       })[entry.source.name]
       return vim_item
     end,
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
   },
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "copilot" },
   },
   confirm_opts = {
     behavior = cmp.SelectBehavior,

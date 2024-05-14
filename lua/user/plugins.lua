@@ -99,6 +99,15 @@ return packer.startup(function(use)
   -- Obsidian
   use { "epwalsh/obsidian.nvim", tag = "*" }
 
+  -- Github Copilot
+  use { "zbirenbaum/copilot.lua", commit = "03f825956ec49e550d07875d867ea6e7c4dc8c00" } -- Github Copilot Lua 
+  use { "zbirenbaum/copilot-cmp"
+    , commit = "d427de01114f8d360de60f3eb569be52baf05d81"
+    , after = { "copilot.lua" }
+    -- , config = function () require("copilot_cmp").setup() end  
+  } -- cmp-completion 
+  use { "AndreM222/copilot-lualine", commit = "f7f0b3b3e7b0183d65fb5416c1d3e210e8a67ba6" } -- lualine integration
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
