@@ -87,7 +87,7 @@ return packer.startup(function(use)
   use { 'ibhagwan/fzf-lua', commit = "e9d07e267040c63dbf015da21dfac77ec6983e5c" } -- Fuzzy finder 
 
 	-- Treesitter
-	use { "nvim-treesitter/nvim-treesitter", commit = "ec97c5ec720da7b8bb5f53572c91c5b144ae0cae" } -- Syntax core
+	use { "nvim-treesitter/nvim-treesitter", tag = "v0.9.2" } -- Syntax core
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" } -- Git markers

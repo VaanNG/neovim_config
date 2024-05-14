@@ -1,9 +1,9 @@
-local status_ok, colorscheme = pcall(require, "nvim-tundra")
+local status_ok, tundra = pcall(require, "nvim-tundra")
 if not status_ok then
   return
 end
 
-colorscheme.setup({
+tundra.setup({
   transparent_background = true,
   dim_inactive_windows = {
     enabled = false,
@@ -15,7 +15,7 @@ colorscheme.setup({
   },
   syntax = {
     booleans = { bold = true, italic = true },
-    comments = { bold = true, italic = true , fg = "#9A9A9A" },
+    comments = { bold = true, italic = true , fg = "#bebebe" },
     conditionals = {},
     constants = { bold = true },
     fields = {},
@@ -46,6 +46,9 @@ colorscheme.setup({
     colors = {},
     highlights = {
       LineNr = { fg = "#fff6b8" },
+      NormalFloat = { bg = "none" },
+      NonText = { fg = "#bebebe" },
+      Pmenu = { bg = "none" },
     },
   },
 })

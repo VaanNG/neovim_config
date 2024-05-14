@@ -1,4 +1,8 @@
-local wilder = require('wilder')
+local status_ok, wilder = pcall(require, 'wilder')
+if not status_ok then
+  return
+end
+
 wilder.setup({
   modes = {':', '/', '?'},
   next_key = '<Tab>',
@@ -15,7 +19,7 @@ wilder.setup({
       -- 0 turns off fuzzy matching
       -- 1 turns on fuzzy matching
       -- 2 partial fuzzy matching (match does not have to begin with the same first letter)
-      fuzzy = 1,
+      fuzzy = 2,
     }),
     wilder.python_search_pipeline({
       -- can be set to wilder#python_fuzzy_delimiter_pattern() for stricter fuzzy matching
@@ -29,12 +33,33 @@ wilder.setup({
   ),
 })
 
-wilder.set_option('renderer', wilder.wildmenu_renderer(
-  -- use wilder.wildmenu_lightline_theme() if using Lightline
-  wilder.wildmenu_airline_theme({
-    -- highlights can be overriden, see :h wilder#wildmenu_renderer()
-    highlights = {default = 'StatusLine'},
-    highlighter = wilder.basic_highlighter(),
-    separator = ' · ',
-  })
-))
+-- DEFAULT LIKE DEFAULT
+-- wilder.set_option('renderer', wilder.wildmenu_renderer({
+--     highlights = {default = 'StatusLine'},
+--     highlighter = wilder.basic_highlighter(),
+--     separator = ' · ',
+--   })
+-- )
+
+-- POPUP MENU
+wilder.set_option('renderer', wilder.popupmenu_renderer({
+  highlights = {
+    default = 'StatusLine',
+    accent = wilder.make_hl('WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#cfee8a', background = 'bg_color'}}),
+  },
+  highlighter = wilder.basic_highlighter(),
+  left = {' ', wilder.popupmenu_devicons()},
+}))
+
+-- MENU
+-- wilder.set_option('renderer', wilder.popupmenu_renderer(
+--   wilder.popupmenu_palette_theme({
+--     -- 'single', 'double', 'rounded' or 'solid'
+--     -- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
+--     border = 'rounded',
+--     max_height = '75%',      -- max height of the palette
+--     min_height = 0,          -- set to the same as 'max_height' for a fixed height window
+--     prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
+--     reverse = 0,             -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
+--   })
+-- ))
