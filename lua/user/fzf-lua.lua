@@ -346,7 +346,7 @@ require'fzf-lua'.setup({
     },
   },
   grep = {
-    prompt            = 'Rg❯ ',
+    prompt            = ' 🕵🔍 ',
     input_prompt      = 'Grep For❯ ',
     multiprocess      = true,           -- run command in a separate process
     git_icons         = true,           -- show git icons?
