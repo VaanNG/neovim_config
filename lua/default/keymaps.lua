@@ -1,22 +1,14 @@
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
+local opts = {
+    noremap = true
+    , silent = true
+}
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
 
 -- Normal --
 -- Better window navigation
@@ -60,18 +52,3 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
-
--- LSP Saga --
-keymap("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", opts)
-keymap("n", "gk", "<Cmd>Lspsaga hover_doc<cr>", opts)
-keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<cr>", opts)
-keymap("n", "gj", "<Cmd>Lspsaga show_line_diagnostics<cr>", opts)
-
