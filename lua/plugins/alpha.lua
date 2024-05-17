@@ -21,6 +21,7 @@ return {
         "⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣯⡤⠖⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠳⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠳⣄⠀⠀⠀",
 
         }
+
         dashboard.section.buttons.val = {
             dashboard.button("f", "  Find file", ":FzfLua files <CR>"),
             dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -28,18 +29,33 @@ return {
             dashboard.button("c", "  Configuration", ":e $MYVIMRC <CR>"),
             dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
         }
-        local function footer()
-            local num_plugins_loaded = require("lazy").stats().count
-            local version = vim.version()
-            local nvim_version_info = " v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-            return  "The Nugget | " .. num_plugins_loaded .. " plugins 🟢 | " .. nvim_version_info
-        end
-        dashboard.section.footer.val = footer()
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'LazyVimStarted',
+            callback = function()
+                local function footer()
+                    -- get plugin loading stats
+                    local stats = require("lazy").stats()
+                    local plugins_loaded = stats.loaded
+                    local plugins_count = stats.count
+                    local ms = (math.floor(stats.startuptime * 100) / 100) 
+                    local nvim_load_stats = " " .. plugins_loaded .. "/" .. plugins_count .. " plugins 🟢 in " .. ms .. "ms"
+                    -- get version
+                    local version = vim.version()
+                    local nvim_version_info = " " .. version.major .. "." .. version.minor .. "." .. version.patch
+
+                    return  "The Nugget | " .. nvim_load_stats .. " | " .. nvim_version_info
+                end
+                dashboard.section.footer.val = footer()
+
+              pcall(vim.cmd.AlphaRedraw)
+            end,
+          })
+
         dashboard.section.footer.opts.hl = "Type"
         dashboard.section.header.opts.hl = "Include"
         dashboard.section.buttons.opts.hl = "Keyword"
-        dashboard.opts.opts.noautocmd = true
+        -- dashboard.opts.opts.noautocmd = true
 
         alpha.setup(dashboard.opts)
     end
