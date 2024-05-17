@@ -17,17 +17,29 @@ return {
           bold = true,
           italic = true,
         },
-        fill = {
-          fg = '#000000',
+        background = {
+          fg = '#bebebe',
         }
       },
-      -- options = {
-      --   offsets = {
-      --     filetype = "NvimTree",
-      --     text = "File Explorer",
-      --     separator = true
-      --   }
-      -- }
+      options = {
+        mode = "buffers",
+        truncate_names = true,
+        separator_style = "thin",
+        enforce_regular_tabs = true,
+        always_show_bufferline = false,
+        max_name_length = 30,
+        max_prefix_length = 30,
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = function()
+              return vim.fn.getcwd()
+            end,
+            highlight = "Directory",
+            separator = true
+          }
+        }
+      }
     }
   end
 }

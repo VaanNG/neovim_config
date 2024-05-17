@@ -35,6 +35,12 @@ return {
       cond = hide_in_width
     }
 
+    local filename = {
+      'filename'
+      , path = 1
+      , icon = '' 
+    }
+
     local mode = {
       "mode",
       fmt = function(str)
@@ -110,7 +116,7 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { branch, diagnostics },
+        lualine_a = { branch, diagnostics, filename },
         lualine_b = { mode },
         lualine_c = {},
         lualine_x = { 
