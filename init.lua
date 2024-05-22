@@ -21,10 +21,3 @@ require("lazy").setup("plugins", {
       notify = false,
     },
   })
-
--- load color scheme 
-colorscheme = "tundra"
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-    return
-end

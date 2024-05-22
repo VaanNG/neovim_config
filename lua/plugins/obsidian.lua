@@ -150,7 +150,7 @@ return {
 
             -- Optional, boolean or a function that takes a filename and returns a boolean.
             -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-            disable_frontmatter = true,
+            disable_frontmatter = false,
 
             -- Optional, alternatively you can customize the frontmatter data.
             ---@return table
