@@ -51,33 +51,33 @@ return {
     -- )
 
     -- POPUP MENU
-    -- wilder.set_option('renderer', wilder.popupmenu_renderer({
-    -- highlights = {
-    --   default = 'StatusLine',
-    --   accent = wilder.make_hl('WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#cfee8a', background = 'bg_color'}}),
-    -- },
-    -- highlighter = wilder.basic_highlighter(),
-    -- left = {' ', wilder.popupmenu_devicons()},
-    -- }))
+    wilder.set_option('renderer', wilder.popupmenu_renderer({
+    highlights = {
+      default = 'StatusLine',
+      accent = wilder.make_hl('WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#cfee8a', background = 'bg_color'}}),
+    },
+    highlighter = wilder.basic_highlighter(),
+    left = {' ', wilder.popupmenu_devicons()},
+    }))
 
     -- MENU
-    wilder.set_option('renderer', wilder.popupmenu_renderer(
-      wilder.popupmenu_palette_theme({
-        -- 'single', 'double', 'rounded' or 'solid'
-        -- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
-        highlights = {
-          default = 'StatusLine',
-          accent = wilder.make_hl('WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#cfee8a', background = 'bg_color'}}),
-        },
-        highlighter = wilder.basic_highlighter(),
-        border = 'rounded',
-        max_height = '50%',      -- max height of the palette
-        min_height = '50%',          -- set to the same as 'max_height' for a fixed height window
-        max_width = '50%',
-        min_width = '50%',
-        prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
-        reverse = 0,             -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
-      })
-    ))
+    -- wilder.set_option('renderer', wilder.popupmenu_renderer(
+    --   wilder.popupmenu_palette_theme({
+    --     -- 'single', 'double', 'rounded' or 'solid'
+    --     -- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
+    --     highlights = {
+    --       default = 'StatusLine',
+    --       accent = wilder.make_hl('WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#cfee8a', background = 'bg_color'}}),
+    --     },
+    --     highlighter = wilder.basic_highlighter(),
+    --     border = 'rounded',
+    --     max_height = '50%',      -- max height of the palette
+    --     min_height = '50%',          -- set to the same as 'max_height' for a fixed height window
+    --     max_width = '50%',
+    --     min_width = '50%',
+    --     prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
+    --     reverse = 0,             -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
+    --   })
+    -- ))
   end
 }
