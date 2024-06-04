@@ -37,7 +37,7 @@ return {
 
     local filename = {
       'filename'
-      , path = 1
+      , path = 4
       , icon = '' 
     }
 

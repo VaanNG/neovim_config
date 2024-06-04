@@ -47,7 +47,7 @@ return {
     --     highlighter = wilder.basic_highlighter(),
     --     separator = ' · ',
     --   })
-    -- -- })
+    -- })
     -- )
 
     -- POPUP MENU
