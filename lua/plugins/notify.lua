@@ -30,5 +30,6 @@ return {
     }
     )
   vim.notify = require('notify') -- set default notification  
-  end 
+  end
 }
+

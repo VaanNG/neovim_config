@@ -27,4 +27,9 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  augroup _on_save_notification
+    autocmd!
+    autocmd BufWritePost * lua vim.notify("File saved: " .. vim.fn.expand('%'), 'info', {title = 'File Saved'})
+  augroup end
 ]]
