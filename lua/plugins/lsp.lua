@@ -57,7 +57,16 @@ return {
     require("mason-lspconfig").setup{
       ensure_installed = servers
     }
-    lspconfig.lua_ls.setup{}
+    lspconfig.lua_ls.setup{
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {'vim'},
+          },
+        },
+      },
+    }
     lspconfig.pyright.setup{
       settings = {
         python = {

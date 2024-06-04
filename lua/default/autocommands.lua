@@ -1,35 +1,84 @@
-vim.cmd [[
-  augroup _general_settings
-    autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
-    autocmd BufWinEnter * :set formatoptions-=cro
-    autocmd FileType qf set nobuflisted
-  augroup end
+-- General settings
+vim.api.nvim_create_augroup("_general_settings", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "_general_settings",
+    pattern = { "qf", "help", "man", "lspinfo" },
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "q", ":close<CR>", { silent = true })
+    end,
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = "_general_settings",
+    callback = function()
+        vim.highlight.on_yank({ higroup = "vim.apiisual", timeout = 200 })
+    end,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = "_general_settings",
+    callback = function()
+        vim.opt_local.formatoptions:remove("cro")
+    end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+    group = "_general_settings",
+    pattern = "qf",
+    callback = function()
+        vim.opt_local.buflisted = false
+    end,
+})
 
-  augroup _git
-    autocmd!
-    autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
-  augroup end
+-- Git settings
+vim.api.nvim_create_augroup("_git", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "_git",
+    pattern = "gitcommit",
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
+})
 
-  augroup _markdown
-    autocmd!
-    autocmd FileType markdown setlocal wrap
-  augroup end
+-- Markdown settings
+vim.api.nvim_create_augroup("_markdown", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "_markdown",
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.wrap = true
+    end,
+})
 
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd = 
-  augroup end
+-- Auto resize
+vim.api.nvim_create_augroup("_auto_resize", { clear = true })
+vim.api.nvim_create_autocmd("VimResized", {
+    group = "_auto_resize",
+    callback = function()
+        vim.cmd("tabdo wincmd =")
+    end,
+})
 
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
+-- Alpha settings
+vim.api.nvim_create_augroup("_alpha", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+    group = "_alpha",
+    pattern = "AlphaReady",
+    callback = function()
+        vim.opt.showtabline = 0
+        vim.api.nvim_create_autocmd("BufUnload", {
+            buffer = 0,
+            callback = function()
+                vim.opt.showtabline = 2
+            end,
+        })
+    end,
+})
 
-  augroup _on_save_notification
-    autocmd!
-    autocmd BufWritePost * lua vim.notify("File saved: " .. vim.fn.expand('%'), 'info', {title = 'File Saved'})
-  augroup end
-]]
+-- On save notification
+vim.api.nvim_create_augroup("_on_save_notification", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = "_on_save_notification",
+    callback = function()
+        vim.notify("File saved: " .. vim.fn.expand('%'), "info", { title = "File Saved" })
+    end,
+})
+
