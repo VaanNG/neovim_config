@@ -72,13 +72,3 @@ vim.api.nvim_create_autocmd("User", {
         })
     end,
 })
-
--- On save notification
-vim.api.nvim_create_augroup("_on_save_notification", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = "_on_save_notification",
-    callback = function()
-        vim.notify("File saved: " .. vim.fn.expand('%'), "info", { title = "File Saved" })
-    end,
-})
-
