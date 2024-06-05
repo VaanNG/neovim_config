@@ -14,7 +14,7 @@ return {
         -- User for NvimTree
         local gwidth = vim.api.nvim_list_uis()[1].width
         local gheight = vim.api.nvim_list_uis()[1].height
-        local width = 60
+        local width = 45
         local height = 40
 
         nvim_tree.setup {
@@ -75,7 +75,7 @@ return {
                         width = width,
                         height = height,
                         row = (gheight - height) * 0.4,
-                        col = (gwidth - width) * 0.95,
+                        col = (gwidth - width) * 0.05,
                         border = "rounded"
                     }
                 }

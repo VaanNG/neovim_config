@@ -58,6 +58,15 @@ return {
                         -- lua = false, -- to disable a format, set to `false`
                     }
                 },
+                notify = {
+                    -- Noice can be used as `vim.notify` so you can route any notification like other messages
+                    -- Notification messages have their level and other properties set.
+                    -- event is always "notify" and kind can be any log level as a string
+                    -- The default routes will forward notifications to nvim-notify
+                    -- Benefit of using Noice for this is the routing and consistent history view
+                    enabled = true,
+                    view = "notify",
+                },
                 popupmenu = {
                     enabled = true, -- enables the Noice popupmenu UI
                     ---@type 'nui'|'cmp'
@@ -95,6 +104,12 @@ return {
                             winhighlight = {Normal = "Normal", FloatBorder = "DiagnosticInfo"}
                         }
                     }
+                },
+                smart_move = {
+                    -- noice tries to move out of the way of existing floating windows.
+                    enabled = true -- you can disable this behaviour here
+                    -- add any filetypes here, that shouldn't trigger smart move.
+                    -- excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
                 }
             }
         )
