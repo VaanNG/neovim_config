@@ -3,6 +3,14 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
+        local colors = {
+            green = "#cfee8a"
+            , blue = "#b1d6d1"
+            , red = "#ff9494"
+            , yellow = "#e9b143"
+            , orange = "#ffad7d"
+        }
+
         require("catppuccin").setup(
             {
                 flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -40,24 +48,24 @@ return {
                 },
                 color_overrides = {
                     mocha = {
-                        rosewater = "#ffc6be",
-                        flamingo = "#ff9494", -- red
-                        pink = "#ff75a0",
-                        mauve = "#ff9494", -- red
-                        red = "#ff9494", -- red
-                        maroon = "#ff9494", -- red
-                        peach = "#FFAD7D",
-                        yellow = "#e9b143",
-                        green = "#cfee8a", -- green
-                        teal = "#cfee8a", -- green
-                        sky = "#7daea3",
-                        sapphire = "#689d6a",
-                        blue = "#b1d6d1",
+                        rosewater = colors["red"],
+                        flamingo = colors["red"],
+                        pink = colors["red"],
+                        mauve = colors["red"],
+                        red = colors["red"],
+                        maroon = colors["red"],
+                        peach = colors["orange"],
+                        yellow = colors["yellow"],
+                        green = colors["green"],
+                        teal = colors["green"],
+                        sky = colors["blue"],
+                        sapphire = colors["blue"],
+                        blue = colors["blue"],
                         lavender = "#e2cca9",
                         text = "#e2cca9",
                         subtext1 = "#e2cca9",
                         subtext0 = "#e2cca9",
-                        overlay2 = "#8C7A58",
+                        overlay2 = colors["red"], -- also responsible for brackets
                         overlay1 = "#735F3F",
                         overlay0 = "#806234",
                         surface2 = "#665c54",
@@ -75,6 +83,8 @@ return {
                     NonText = {fg = "#bebebe"},
                     Pmenu = {bg = "none"},
                     Comment = {fg = "#bebebe"},
+                    Delimiter = {fg = colors["red"]},
+                    Operator = {fg = colors["red"]},
                 },
                 default_integrations = true,
                 integrations = {

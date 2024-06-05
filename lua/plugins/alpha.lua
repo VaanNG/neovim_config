@@ -56,7 +56,7 @@ return {
         )
 
         dashboard.section.header.opts.hl = "String"
-        -- dashboard.section.buttons.opts.hl = "Keyword"
+        -- dashboard.section.buttons.opts.hl = "Text"
         dashboard.section.footer.opts.hl = "Text"
 
         alpha.setup(dashboard.opts)

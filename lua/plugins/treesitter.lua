@@ -24,7 +24,8 @@ return {
                     "javascript",
                     "typescript",
                     "python",
-                    "query"
+                    "query",
+                    "sql"
                 }, -- one of "all" or a list of languages
                 ignore_install = {}, -- List of parsers to ignore installing
                 highlight = {
