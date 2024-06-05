@@ -33,14 +33,14 @@ return {
       notification = "%T",
       notification_history = "%FT%T"
       },
-      timeout = 3000,
+      timeout = 2500,
       top_down = true
     }
     )
     require('noice').setup({
          cmdline = {
             enabled = true, -- enables the Noice cmdline UI
-            view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+            view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
             opts = {}, -- global options for the cmdline. See section on views
             ---@type table<string, CmdlineFormat>
             format = {
@@ -60,7 +60,7 @@ return {
             },
           },
           popupmenu = {
-            enabled = false, -- enables the Noice popupmenu UI
+            enabled = true, -- enables the Noice popupmenu UI
             ---@type 'nui'|'cmp'
             backend = "nui", -- backend to use to show regular cmdline completions
             ---@type NoicePopupmenuItemKind|false

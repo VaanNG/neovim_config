@@ -1,45 +1,46 @@
 return {
-  "hrsh7th/nvim-cmp"
-  , dependencies = {
-    "hrsh7th/cmp-buffer"
-    , "hrsh7th/cmp-path"
-    , "hrsh7th/cmp-nvim-lsp"
-  }
-  , config = function()
-    --   פּ ﯟ   some other good icons
-    local kind_icons = {
-      Text = "",
-      Method = "m",
-      Function = "",
-      Constructor = "",
-      Field = "",
-      Variable = "",
-      Class = "",
-      Interface = "",
-      Module = "",
-      Property = "",
-      Unit = "",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "",
-      Event = "",
-      Operator = "",
-      TypeParameter = "",
-      Copilot = ""
+    "hrsh7th/nvim-cmp"
+    , dependencies = {
+        "hrsh7th/cmp-buffer"
+        , "hrsh7th/cmp-path"
+        , "hrsh7th/cmp-nvim-lsp"
+        , "hrsh7th/cmp-cmdline"
+    }
+    , config = function()
+        --   פּ ﯟ   some other good icons
+        local kind_icons = {
+        Text = "",
+        Method = "m",
+        Function = "",
+        Constructor = "",
+        Field = "",
+        Variable = "",
+        Class = "",
+        Interface = "",
+        Module = "",
+        Property = "",
+        Unit = "",
+        Value = "",
+        Enum = "",
+        Keyword = "",
+        Snippet = "",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "",
+        Event = "",
+        Operator = "",
+        TypeParameter = "",
+        Copilot = ""
     }
     -- find more here: https://www.nerdfonts.com/cheat-sheet
 
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
-      return
+        return
     end
     cmp.setup {
       mapping = cmp.mapping.preset.insert({
@@ -126,5 +127,25 @@ return {
         },
       },
     }
+
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+    })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+    })
+
   end
 }

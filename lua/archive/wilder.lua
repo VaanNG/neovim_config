@@ -1,5 +1,6 @@
 return {
   'gelguy/wilder.nvim'
+    , enabled = false
   , build = ':UpdateRemotePlugins'
   , config = function()
     local status_ok, wilder = pcall(require, 'wilder')
