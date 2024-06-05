@@ -1,5 +1,6 @@
 return {
     "folke/noice.nvim",
+    version = "*",
     event = "VeryLazy",
     opts = {},
     dependencies = {
@@ -10,7 +11,6 @@ return {
         --   If not available, we use `mini` as the fallback
         "rcarriga/nvim-notify"
     },
-    version = "*",
     config = function()
         require("notify").setup(
             {
