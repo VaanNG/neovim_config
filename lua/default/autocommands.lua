@@ -65,3 +65,9 @@ vim.api.nvim_create_autocmd("Filetype", {
         vim.keymap.del('i','<right>',{buffer = true})
     end
 })
+
+-- No Line Number when in Terminal Mode
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  command = "setlocal nonumber norelativenumber"
+})
