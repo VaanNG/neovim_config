@@ -55,10 +55,9 @@ return {
             }
         )
 
-        dashboard.section.footer.opts.hl = "Type"
-        dashboard.section.header.opts.hl = "Include"
-        dashboard.section.buttons.opts.hl = "Keyword"
-        -- dashboard.opts.opts.noautocmd = true
+        dashboard.section.header.opts.hl = "String"
+        -- dashboard.section.buttons.opts.hl = "Keyword"
+        dashboard.section.footer.opts.hl = "Text"
 
         alpha.setup(dashboard.opts)
     end

@@ -56,19 +56,3 @@ vim.api.nvim_create_autocmd("VimResized", {
         vim.cmd("tabdo wincmd =")
     end,
 })
-
--- Alpha settings
-vim.api.nvim_create_augroup("_alpha", { clear = true })
-vim.api.nvim_create_autocmd("User", {
-    group = "_alpha",
-    pattern = "AlphaReady",
-    callback = function()
-        vim.opt.showtabline = 0
-        vim.api.nvim_create_autocmd("BufUnload", {
-            buffer = 0,
-            callback = function()
-                vim.opt.showtabline = 2
-            end,
-        })
-    end,
-})
