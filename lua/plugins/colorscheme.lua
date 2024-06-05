@@ -85,6 +85,10 @@ return {
                     Comment = {fg = "#bebebe"},
                     Delimiter = {fg = colors["red"]},
                     Operator = {fg = colors["red"]},
+                    FzfLuaHelpNormal = {fg = colors.green},
+                    FzfLuaHeaderText = {fg = colors.green},
+                    FzfLuaTitle = {fg = colors.green},
+                    FzfLuaBufFlagAlt = {fg = colors.green},
                 },
                 default_integrations = true,
                 integrations = {

@@ -21,24 +21,6 @@ return {
                     -- highlights should optimally be set by the colorscheme using
                     -- FzfLuaXXX highlights. If your colorscheme doesn't set these
                     -- or you wish to override its defaults use these:
-                    --[[ hl = {
-        normal         = 'Normal',        -- window normal color (fg+bg)
-        border         = 'FloatBorder',   -- border color
-        help_normal    = 'Normal',        -- <F1> window normal
-        help_border    = 'FloatBorder',   -- <F1> window border
-        -- Only used with the builtin previewer:
-        cursor         = 'Cursor',        -- cursor highlight (grep/LSP matches)
-        cursorline     = 'CursorLine',    -- cursor line
-        cursorlinenr   = 'CursorLineNr',  -- cursor line number
-        search         = 'IncSearch',     -- search matches (ctags|help)
-        title          = 'Normal',        -- preview border title (file/buffer)
-        -- Only used with 'winopts.preview.scrollbar = 'float'
-        scrollfloat_e  = 'PmenuSbar',     -- scrollbar "empty" section highlight
-        scrollfloat_f  = 'PmenuThumb',    -- scrollbar "full" section highlight
-        -- Only used with 'winopts.preview.scrollbar = 'border'
-        scrollborder_e = 'FloatBorder',   -- scrollbar "empty" section highlight
-        scrollborder_f = 'FloatBorder',   -- scrollbar "full" section highlight
-        }, ]]
                     preview = {
                         -- default     = 'bat',           -- override the default previewer?
                         -- default uses the 'builtin' previewer
@@ -72,7 +54,7 @@ return {
                             signcolumn = "no",
                             list = false,
                             foldenable = false,
-                            foldmethod = "manual"
+                            foldmethod = "manual",
                         }
                     },
                     on_create = function()
@@ -158,21 +140,21 @@ return {
                     ["--border"] = "none"
                 },
                 -- fzf '--color=' options (optional)
-                --[[ fzf_colors = {
-        ["fg"]          = { "fg", "CursorLine" },
-        ["bg"]          = { "bg", "Normal" },
-        ["hl"]          = { "fg", "Comment" },
-        ["fg+"]         = { "fg", "Normal" },
-        ["bg+"]         = { "bg", "CursorLine" },
-        ["hl+"]         = { "fg", "Statement" },
-        ["info"]        = { "fg", "PreProc" },
-        ["prompt"]      = { "fg", "Conditional" },
-        ["pointer"]     = { "fg", "Exception" },
-        ["marker"]      = { "fg", "Keyword" },
-        ["spinner"]     = { "fg", "Label" },
-        ["header"]      = { "fg", "Comment" },
-        ["gutter"]      = { "bg", "Normal" },
-    }, ]]
+                fzf_colors = {
+                    ["fg"]          = { "fg", "Normal" },
+                    ["bg"]          = { "bg", "Normal" },
+                    ["hl"]          = { "fg", "String" },
+                    ["fg+"]         = { "fg", "Normal" },
+                    ["bg+"]         = { "bg", "Normal" },
+                    ["hl+"]         = { "fg", "String" },
+                    ["info"]        = { "fg", "Normal" },
+                    ["prompt"]      = { "fg", "Normal" },
+                    ["pointer"]     = { "fg", "Normal" },
+                    ["marker"]      = { "fg", "String" },
+                    ["spinner"]     = { "fg", "String" },
+                    ["header"]      = { "fg", "Comment" },
+                    ["gutter"]      = { "bg", "Normal" },
+                },
                 previewers = {
                     cat = {
                         cmd = "cat",
