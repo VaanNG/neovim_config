@@ -106,11 +106,54 @@ return {
             return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
         end
 
+        local colors = {
+            black = "#062622",
+            white = "#e2cca9",
+            red = "#ff9494",
+            green = "#cfee8a",
+            blue = "#83a598",
+            yellow = "#e9b143",
+            orange = "#ffad7d"
+        }
+
+        local theme = {
+            normal = {
+                a = {bg = "none", fg = colors.white, gui = "bold"},
+                b = {bg = "none", fg = colors.white},
+                c = {bg = "none", fg = colors.white}
+            },
+            insert = {
+                a = {bg = "none", fg = colors.green, gui = "bold"},
+                b = {bg = "none", fg = colors.green},
+                c = {bg = "none", fg = colors.white}
+            },
+            visual = {
+                a = {bg = "none", fg = colors.yellow, gui = "bold"},
+                b = {bg = "none", fg = colors.yellow},
+                c = {bg = "none", fg = colors.white}
+            },
+            replace = {
+                a = {bg = "none", fg = colors.red, gui = "bold"},
+                b = {bg = "none", fg = colors.red},
+                c = {bg = "none", fg = colors.white}
+            },
+            command = {
+                a = {bg = "none", fg = colors.orange, gui = "bold"},
+                b = {bg = "none", fg = colors.orange},
+                c = {bg = "none", fg = colors.white}
+            },
+            inactive = {
+                a = {bg = "none", fg = colors.white, gui = "bold"},
+                b = {bg = "none", fg = colors.white},
+                c = {bg = "none", fg = colors.white}
+            }
+        }
+
         lualine.setup(
             {
                 options = {
                     icons_enabled = true,
-                    theme = "auto",
+                    theme = theme,
                     component_separators = {left = "", right = ""},
                     section_separators = {left = "", right = ""},
                     disabled_filetypes = {"alpha", "dashboard", "NvimTree", "Outline"},

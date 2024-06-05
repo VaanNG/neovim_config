@@ -56,3 +56,12 @@ vim.api.nvim_create_autocmd("VimResized", {
         vim.cmd("tabdo wincmd =")
     end,
 })
+
+-- [BUG] On SQL files when INSERT mode using left right navigation, it triggers sqlcomplete#dril... repeatedly.
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "sql",
+    callback = function() 
+        vim.keymap.del('i','<left>',{buffer = true})
+        vim.keymap.del('i','<right>',{buffer = true})
+    end
+})
