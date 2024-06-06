@@ -9,6 +9,8 @@ return {
             , red = "#ff9494"
             , yellow = "#e5d56f"
             , orange = "#ffad7d"
+            , white = "#e2cca9"
+            , gray = "#bebebe"
         }
 
         require("catppuccin").setup(
@@ -48,24 +50,24 @@ return {
                 },
                 color_overrides = {
                     mocha = {
-                        rosewater = colors["red"],
-                        flamingo = colors["red"],
-                        pink = colors["red"],
-                        mauve = colors["red"],
-                        red = colors["red"],
-                        maroon = colors["red"],
-                        peach = colors["orange"],
-                        yellow = colors["yellow"],
-                        green = colors["green"],
-                        teal = colors["green"],
-                        sky = colors["blue"],
-                        sapphire = colors["blue"],
-                        blue = colors["blue"],
-                        lavender = "#e2cca9",
-                        text = "#e2cca9",
-                        subtext1 = "#e2cca9",
-                        subtext0 = "#e2cca9",
-                        overlay2 = colors["red"], -- also responsible for brackets
+                        rosewater = colors.red,
+                        flamingo = colors.red,
+                        pink = colors.red,
+                        mauve = colors.red,
+                        red = colors.red,
+                        maroon = colors.red,
+                        peach = colors.orange,
+                        yellow = colors.yellow,
+                        green = colors.green,
+                        teal = colors.green,
+                        sky = colors.blue,
+                        sapphire = colors.blue,
+                        blue = colors.blue,
+                        lavender = colors.white,
+                        text = colors.white,
+                        subtext1 = colors.white,
+                        subtext0 = colors.white,
+                        overlay2 = colors.red, -- also responsible for brackets
                         overlay1 = "#735F3F",
                         overlay0 = "#806234",
                         surface2 = "#665c54",
@@ -77,18 +79,29 @@ return {
                     }
                 },
                 custom_highlights = {
-                    LineNr = {fg = "#bebebe"},
+                    LineNr = {fg = colors.gray},
                     Normal = {bg = "none"},
                     NormalFloat = {bg = "none"},
-                    NonText = {fg = "#bebebe"},
+                    NonText = {fg = colors.gray},
                     Pmenu = {bg = "none"},
-                    Comment = {fg = "#bebebe"},
-                    Delimiter = {fg = colors["red"]},
-                    Operator = {fg = colors["red"]},
+                    Comment = {fg = colors.gray},
+                    Delimiter = {fg = colors.red},
+                    Operator = {fg = colors.red},
+                    -- DiagonisticSignInfo = {fg = colors.white},
+
                     FzfLuaHelpNormal = {fg = colors.green},
                     FzfLuaHeaderText = {fg = colors.green},
                     FzfLuaTitle = {fg = colors.green},
                     FzfLuaBufFlagAlt = {fg = colors.green},
+
+                    NoiceCmdlinePopupBorder = {fg = colors.white},
+                    NoiceCmdlinePopupTitle = {fg = colors.green},
+                    NoiceCmdlineIcon = {fg = colors.green},
+
+                    WhichKeyBorder = {fg = colors.white}, -- border
+                    WhichKeyDesc = {fg = colors.white}, -- single cmd option
+                    WhichKeyGroup = {fg = colors.green}, -- group
+
                 },
                 default_integrations = true,
                 integrations = {
