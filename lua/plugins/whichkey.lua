@@ -95,7 +95,7 @@ return {
                 name = "Git",
                 j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
                 k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
-                b = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame"},
+                l = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Line Blame"},
                 p = {"<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"},
                 r = {"<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"},
                 R = {"<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"},
