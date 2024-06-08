@@ -62,7 +62,7 @@ return {
                 -- Add more patterns for other elements as needed
             },
         },
-        filetype = {"sql"}, -- if filetype does not match the parser name
+        filetype = {}, -- if filetype does not match the parser name
     }
     end
 }
