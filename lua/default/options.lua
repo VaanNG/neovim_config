@@ -37,7 +37,7 @@ local options = {
     whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
     fillchars = "eob: "                      -- replacing endofbuffer "~" with " "
 }
-  
+
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
