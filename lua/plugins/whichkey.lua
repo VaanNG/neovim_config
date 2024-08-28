@@ -29,22 +29,27 @@ return {
             -- add operators that will trigger motion and text object completion
             -- to enable all native operators, set the preset / operators plugin above
             -- operators = { gc = "Comments" },
-            key_labels = {},
             icons = {
                 breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
                 separator = "➜", -- symbol used between a key and it's label
-                group = "+" -- symbol prepended to a group
+                group = "+", -- symbol prepended to a group
+                ellipsis = "…",
+                rules = {},
+                mappings = false,
+                colors = true
             },
-            popup_mappings = {
+            keys = {
                 scroll_down = "<c-d>", -- binding to scroll down inside the popup
                 scroll_up = "<c-u>" -- binding to scroll up inside the popup
             },
-            window = {
+            win = {
                 border = "rounded", -- none, single, double, shadow
-                position = "bottom", -- bottom, top
-                margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
-                padding = {2, 2, 2, 2}, -- extra window padding [top, right, bottom, left]
-                winblend = 0
+                -- margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
+                -- padding = {2, 2, 2, 2}, -- extra window padding [top, right, bottom, left]
+                bo = {},
+                wo = {
+                    windblend = 0
+                }
             },
             layout = {
                 height = {min = 4, max = 25}, -- min and max height of the columns
@@ -52,76 +57,66 @@ return {
                 spacing = 3, -- spacing between columns
                 align = "left" -- align columns left, center or right
             },
-            ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-            hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
             show_help = true, -- show help message on the command line when the popup is visible
-            triggers = "auto", -- automatically setup triggers
-            -- triggers = {"<leader>"} -- or specify a list manually
-            triggers_blacklist = {
-                -- list of mode / prefixes that should never be hooked by WhichKey
-                -- this is mostly relevant for key maps that start with a native binding
-                -- most people should not need to change this
-                i = {"j", "k"},
-                v = {"j", "k"}
-            }
-        }
-        local opts = {
-            mode = "n", -- NORMAL mode
-            prefix = "<leader>",
-            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-            silent = true, -- use `silent` when creating keymaps
-            noremap = true, -- use `noremap` when creating keymaps
-            nowait = true -- use `nowait` when creating keymaps
+            triggers = {
+                { "<auto>", mode = "nxsot" },
+            },
+            replace = {
+                key = {
+                    function(key)
+                        return require("which-key.view").format(key)
+                    end,
+                    -- { "<Space>", "SPC" },
+                },
+                desc = {
+                    { "<Plug>%(?(.*)%)?", "%1" },
+                    { "^%+", "" },
+                    { "<[cC]md>", "" },
+                    { "<[cC][rR]>", "" },
+                    { "<[sS]ilent>", "" },
+                    { "^lua%s+", "" },
+                    { "^call%s+", "" },
+                    { "^:%s*", "" },
+                },
+            },
         }
         local mappings = {
-            ["a"] = {"<cmd>Alpha<cr>", "Alpha"},
-            ["e"] = {"<cmd>NvimTreeToggle<cr>", "Explorer"},
-            ["w"] = {"<cmd>w!<CR>", "Save"},
-            ["q"] = {"<cmd>q!<CR>", "Quit"},
-            ["c"] = {"<cmd>Bdelete!<CR>", "Close Buffer"},
-            ["h"] = {"<cmd>nohlsearch<CR>", "No Highlight"},
-            f = {
-                name = "Fuzzy Finder",
-                f = {"<cmd>FzfLua files<cr>", "Find files"},
-                F = {"<cmd>FzfLua live_grep<cr>", "Find Text"},
-                g = {"<cmd>FzfLua git_commits<cr>", "Find commits"},
-                G = {"<cmd>FzfLua git_bcommits<cr>", "Find current file commits"},
-            },
-            -- F = {
-            --     name = "Formatter",
-            --     p = {"<cmd>Prettier<cr>", "Prettier"}
-            -- },
-            g = {
-                name = "Git",
-                j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
-                k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
-                l = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Line Blame"},
-                p = {"<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"},
-                r = {"<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"},
-                R = {"<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"},
-                s = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
-                u = {"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk"},
-                d = {"<cmd>Gitsigns diffthis HEAD<cr>", "Diff"},
-            },
-            l = {
-                name = "LSP",
-                a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
-                f = {"<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format"},
-                i = {"<cmd>LspInfo<cr>", "Info"},
-                I = {"<cmd>LspInstallInfo<cr>", "Installer Info"},
-                j = {"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic"},
-                k = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic"},
-                l = {"<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action"},
-                q = {"<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix"},
-                r = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"}
-            },
-            b = {
-                name = "Bufferline",
-                p = {"<cmd>BufferLineTogglePin<cr>", "Pin Buffer"},
-                f = {"<cmd>BufferLinePick<cr>", "Pick Buffer"}
-            }
+            { "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha", nowait = true, remap = false },
+            { "<leader>b", group = "Bufferline", nowait = true, remap = false },
+            { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Pick Buffer", nowait = true, remap = false },
+            { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin Buffer", nowait = true, remap = false },
+            { "<leader>c", "<cmd>Bdelete!<CR>", desc = "Close Buffer", nowait = true, remap = false },
+            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", nowait = true, remap = false },
+            { "<leader>f", group = "Fuzzy Finder", nowait = true, remap = false },
+            { "<leader>fF", "<cmd>FzfLua live_grep<cr>", desc = "Find Text", nowait = true, remap = false },
+            { "<leader>fG", "<cmd>FzfLua git_bcommits<cr>", desc = "Find current file commits", nowait = true, remap = false },
+            { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files", nowait = true, remap = false },
+            { "<leader>fg", "<cmd>FzfLua git_commits<cr>", desc = "Find commits", nowait = true, remap = false },
+            { "<leader>g", group = "Git", nowait = true, remap = false },
+            { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", nowait = true, remap = false },
+            { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff", nowait = true, remap = false },
+            { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk", nowait = true, remap = false },
+            { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk", nowait = true, remap = false },
+            { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Line Blame", nowait = true, remap = false },
+            { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk", nowait = true, remap = false },
+            { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", nowait = true, remap = false },
+            { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk", nowait = true, remap = false },
+            { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk", nowait = true, remap = false },
+            { "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", nowait = true, remap = false },
+            { "<leader>l", group = "LSP", nowait = true, remap = false },
+            { "<leader>lI", "<cmd>LspInstallInfo<cr>", desc = "Installer Info", nowait = true, remap = false },
+            { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", nowait = true, remap = false },
+            { "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", desc = "Format", nowait = true, remap = false },
+            { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info", nowait = true, remap = false },
+            { "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic", nowait = true, remap = false },
+            { "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", nowait = true, remap = false },
+            { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", nowait = true, remap = false },
+            { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix", nowait = true, remap = false },
+            { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", nowait = true, remap = false },
+            { "<leader>q", "<cmd>q!<CR>", desc = "Quit", nowait = true, remap = false },
+            { "<leader>w", "<cmd>w!<CR>", desc = "Save", nowait = true, remap = false },
         }
         which_key.setup(setup)
-        which_key.register(mappings, opts)
+        which_key.add(mappings)
     end
 }
