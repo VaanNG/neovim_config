@@ -1,5 +1,6 @@
 return {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     version = "*",
     config = function()
         local status_ok, which_key = pcall(require, "which-key")
