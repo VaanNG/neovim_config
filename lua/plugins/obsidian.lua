@@ -1,5 +1,6 @@
 return {
     "epwalsh/obsidian.nvim",
+    event = "VeryLazy",
     version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim"

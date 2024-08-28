@@ -83,16 +83,23 @@ return {
         }
         local mappings = {
             { "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha", nowait = true, remap = false },
+            { "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", nowait = true, remap = false },
+            { "<leader>q", "<cmd>q!<CR>", desc = "Quit", nowait = true, remap = false },
+            { "<leader>w", "<cmd>w!<CR>", desc = "Save", nowait = true, remap = false },
+            { "<leader>c", "<cmd>Bdelete!<CR>", desc = "Close Buffer", nowait = true, remap = false },
+            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", nowait = true, remap = false },
+
             { "<leader>b", group = "Bufferline", nowait = true, remap = false },
             { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Pick Buffer", nowait = true, remap = false },
             { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin Buffer", nowait = true, remap = false },
-            { "<leader>c", "<cmd>Bdelete!<CR>", desc = "Close Buffer", nowait = true, remap = false },
-            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", nowait = true, remap = false },
+            
             { "<leader>f", group = "Fuzzy Finder", nowait = true, remap = false },
-            { "<leader>fF", "<cmd>FzfLua live_grep<cr>", desc = "Find Text", nowait = true, remap = false },
-            { "<leader>fG", "<cmd>FzfLua git_bcommits<cr>", desc = "Find current file commits", nowait = true, remap = false },
-            { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files", nowait = true, remap = false },
-            { "<leader>fg", "<cmd>FzfLua git_commits<cr>", desc = "Find commits", nowait = true, remap = false },
+            { "<leader>fF", "<cmd>FzfLua live_grep<cr>", desc = "Find text", nowait = true, remap = false },
+            { "<leader>fG", "<cmd>FzfLua git_bcommits<cr>", desc = "Find current file commit", nowait = true, remap = false },
+            { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find file", nowait = true, remap = false },
+            { "<leader>fg", "<cmd>FzfLua git_commits<cr>", desc = "Find commit", nowait = true, remap = false },
+            { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Find buffer", nowait = true, remap = false },
+
             { "<leader>g", group = "Git", nowait = true, remap = false },
             { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer", nowait = true, remap = false },
             { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff", nowait = true, remap = false },
@@ -103,7 +110,7 @@ return {
             { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", nowait = true, remap = false },
             { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk", nowait = true, remap = false },
             { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk", nowait = true, remap = false },
-            { "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", nowait = true, remap = false },
+
             { "<leader>l", group = "LSP", nowait = true, remap = false },
             { "<leader>lI", "<cmd>LspInstallInfo<cr>", desc = "Installer Info", nowait = true, remap = false },
             { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", nowait = true, remap = false },
@@ -114,8 +121,6 @@ return {
             { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", nowait = true, remap = false },
             { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix", nowait = true, remap = false },
             { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", nowait = true, remap = false },
-            { "<leader>q", "<cmd>q!<CR>", desc = "Quit", nowait = true, remap = false },
-            { "<leader>w", "<cmd>w!<CR>", desc = "Save", nowait = true, remap = false },
         }
         which_key.setup(setup)
         which_key.add(mappings)

@@ -1,7 +1,7 @@
 return {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     version = "*",
-    lazy = false,
     config = function()
         local status_ok, comment = pcall(require, "Comment")
         if not status_ok then
