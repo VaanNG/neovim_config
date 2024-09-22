@@ -60,7 +60,8 @@ return {
             },
             show_help = true, -- show help message on the command line when the popup is visible
             triggers = {
-                { "<auto>", mode = "nxsot" },
+                -- { "<auto>", mode = "nxsot" }, -- DEFAULT
+                { '<leader>' }, -- Only show popup for keys starting with leader key
             },
             replace = {
                 key = {
