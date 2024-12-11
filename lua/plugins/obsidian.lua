@@ -22,7 +22,7 @@ return {
                 workspaces = {
                     {
                         name = "zettelkasten",
-                        path = "~/Documents/obsidian-vaults/zettelkasten"
+                        path = "~/Projects/obsidian/zettelkasten_sync"
                     }
                     -- {
                     --   name = "work",
@@ -165,7 +165,11 @@ return {
                     date_format = "%Y-%m-%d",
                     time_format = "%H:%M",
                     -- A map for custom variables, the key should be the variable and the value a function
-                    substitutions = {}
+                    substitutions = {
+                        yesterday = function()
+                          return os.date("%Y-%m-%d", os.time() - 86400)
+                        end
+                    }
                 },
                 -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
                 -- URL it will be ignored but you can customize this behavior here.
