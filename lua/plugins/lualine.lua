@@ -10,11 +10,6 @@ return {
             return
         end
 
-        local status_ok, copilot_lualine_spinners = pcall(require, "copilot-lualine.spinners")
-        if not status_ok then
-            return
-        end
-
         local hide_in_width = function()
             return vim.fn.winwidth(0) > 80
         end
@@ -64,33 +59,6 @@ return {
         local location = {
             "location",
             padding = 0
-        }
-
-        local copilot = {
-            "copilot",
-            -- Default values
-            symbols = {
-                status = {
-                    icons = {
-                        enabled = " :  ",
-                        sleep = " :  ", -- auto-trigger disabled
-                        disabled = " :  ",
-                        warning = " :  ",
-                        unknown = " :  "
-                    },
-                    hl = {
-                        enabled = "#7FFFD4", -- aquamarine
-                        sleep = "#AEB7D0", -- grey
-                        disabled = "#6272A4", -- blue
-                        warning = "#FFB86C", -- orange
-                        unknown = "#FF5555" -- red
-                    }
-                },
-                spinners = copilot_lualine_spinners.dots,
-                spinner_color = "#6272A4" -- blue
-            },
-            show_colors = true,
-            show_loading = true
         }
 
         -- cool function for progress
@@ -165,7 +133,6 @@ return {
                     lualine_b = {mode},
                     lualine_c = {},
                     lualine_x = {
-                        copilot,
                         "diff",
                         spaces,
                         "encoding",
