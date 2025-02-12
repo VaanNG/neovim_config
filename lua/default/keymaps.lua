@@ -1,8 +1,4 @@
-local opts = {
-    noremap = true
-    , silent = true
-}
-
+local opts = { noremap = true , silent = true }
 local term_opts = { noremap = true, silent = true }
 
 -- Shorten function name
@@ -56,3 +52,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+
+-- Oil
+keymap("n", "-", "<CMD>Oil<CR>", opts)
