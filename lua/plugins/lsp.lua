@@ -1,82 +1,54 @@
+-- plugins/lsp.lua
 return {
+  {
     "neovim/nvim-lspconfig",
+    version = "*",
     event = "VeryLazy",
-    dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim"
-    },
     config = function()
-        local status_ok, lspconfig = pcall(require, "lspconfig")
-        if not status_ok then
-            return
-        end
-        local signs = {
-            {name = "DiagnosticSignError", text = ""},
-            {name = "DiagnosticSignWarn", text = ""},
-            {name = "DiagnosticSignHint", text = ""},
-            {name = "DiagnosticSignInfo", text = ""}
-        }
-        for _, sign in ipairs(signs) do
-            vim.fn.sign_define(sign.name, {texthl = sign.name, text = sign.text, numhl = ""})
-        end
-        local config = {
-            virtual_text = true,
-            signs = {
-                active = signs -- show signs
-            },
-            update_in_insert = true,
-            underline = true,
-            severity_sort = true,
-            float = {
-                focusable = true,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = ""
-            }
-        }
-        vim.diagnostic.config(config)
+      -- Setup basic LSP signs and diagnostic behavior
+      local signs = {
+        Error = "", Warn = "", Hint = "", Info = ""
+      }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
 
-        require("mason").setup {
-            ui = {
-                border = "rounded", -- UI window border style
-                icons = {
-                    -- Customize icons
-                    package_installed = "✓",
-                    package_pending = "➜",
-                    package_uninstalled = "✗"
-                }
-            },
-            log_level = vim.log.levels.INFO, -- Set log level (INFO, DEBUG, etc.)
-            max_concurrent_installers = 4 -- Limit concurrent installations
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        update_in_insert = true,
+        underline = true,
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          source = "always",
+        },
+      })
+
+      -- Manual LSP server setup (example: Lua and Python)
+      local lspconfig = require("lspconfig")
+
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } }
+          }
         }
-        local servers = {
-            "lua_ls", --lua
-            "pyright" -- python
-        }
-        require("mason-lspconfig").setup {
-            ensure_installed = servers
-        }
-        lspconfig.lua_ls.setup {
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = {"vim"}
-                    }
-                }
-            }
-        }
-        lspconfig.pyright.setup {
-            settings = {
-                python = {
-                    analysis = {
-                        typeCheckingMode = "off"
-                    }
-                }
-            }
-        }
+      })
+
+      lspconfig.pyright.setup({})
+
     end
+  },
+  {
+    "williamboman/mason.nvim",
+    event = "VeryLazy",
+    version = "*",
+    build = ":MasonUpdate", -- optional
+    config = function()
+      require("mason").setup()
+    end
+  }
 }
 
