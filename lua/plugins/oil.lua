@@ -88,7 +88,7 @@ return {
             concealcursor = "nvic",
           },
           -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-          delete_to_trash = false,
+          delete_to_trash = true,
           -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
           skip_confirm_for_simple_edits = false,
           -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
@@ -208,7 +208,7 @@ return {
             -- Padding around the floating window
             padding = 2,
             -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-            max_width = 0,
+            max_width = 0.35,
             max_height = 0,
             border = "rounded",
             win_options = {
@@ -221,7 +221,10 @@ return {
             -- This is the config that will be passed to nvim_open_win.
             -- Change values here to customize the layout
             override = function(conf)
-              return conf
+                local ui = vim.api.nvim_list_uis()[1]
+                conf.col = 2 -- pixels from the left
+                conf.row = math.floor((ui.height - conf.height) / 2) -- center vertically
+                return conf
             end,
           },
           -- Configuration for the file preview window

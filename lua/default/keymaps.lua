@@ -54,4 +54,4 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 
 -- Oil
-keymap("n", "-", "<CMD>Oil<CR>", opts)
+keymap("n", "-", "<CMD>Oil --float<CR>", opts)

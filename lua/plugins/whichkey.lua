@@ -88,7 +88,6 @@ return {
             { "<leader>q", "<cmd>q!<CR>", desc = "Quit", nowait = true, remap = false },
             { "<leader>w", "<cmd>w!<CR>", desc = "Save", nowait = true, remap = false },
             { "<leader>c", "<cmd>Bdelete!<CR>", desc = "Close Buffer", nowait = true, remap = false },
-            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", nowait = true, remap = false },
 
             { "<leader>b", group = "Bufferline", nowait = true, remap = false },
             { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Pick Buffer", nowait = true, remap = false },
