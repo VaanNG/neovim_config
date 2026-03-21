@@ -41,9 +41,7 @@
        * `cmp-path`: Path completions
        * `cmp-nvim-lsp`: LSP completions
        * `cmp-cmdline`: Command line completions
-* `indent-blankline.nvim` 
-   * *Description*: Show indents ...
-* `nvim-autopairs`: 
+* `nvim-autopairs`:
   * *Description*: Auto pairing opening of brackets {}, (), ... 
 * `alpha-nvim`:
   * *Description*: Startup dashboard, go crazy 
@@ -60,8 +58,3 @@
   * *Description*: Syntax tree parser: highlighting, indentation, folding.
 * `catpuccin`
   * *Description*: Modern colorscheme allowing for a lot of customization to reproduce the theme that I liked. RIP nvim-tundra.
-* `obsidian.nvim`
-  * *Description*: Integrate with the Obsidian note taking app ecosystem.
-  * *Dependencies*: 
-      * `plenary`
-          * *Description*: A library of lua functions ...
