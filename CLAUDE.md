@@ -9,24 +9,29 @@ Van's personal Neovim configuration. The goal is a clean two-tier plugin system:
 Exit condition for this project: stable minimal + full tier separation,
 implemented and documented.
 
-## Before you start any session
+## Session start — do this before anything else
 1. Read `docs/VISION.md`
 2. Read `docs/BACKLOG.md`
-3. Confirm the task with Van before touching any file
+3. Check if the top active task is already complete — if so, move it to
+   the Archive section of BACKLOG.md with a completion date
+4. State the current top task to Van and confirm before touching any file
+5. Create a branch before touching any file:
+   - Naming convention: `type/short-description`
+   - Examples: `archive/obsidian-indentline`, `feat/tier-split`, `fix/keymaps`
+   - State the branch name to Van
+   - Run: `git checkout -b <branch-name>`
 
 ## How to behave
 - Explain what you're doing and why as you go
 - One logical change at a time — don't batch unrelated work
 - If something is ambiguous, stop and ask rather than assume
-- When done, append an entry to `CHANGELOG.md` (format below)
 
-## Branch management
-- Create a branch at the start of every session before touching any file
-- Naming convention: `type/short-description`
-  - Examples: `archive/obsidian-indentline`, `feat/tier-split`, `fix/keymaps`
-- State the branch name to Van at the start of the session
-- Never commit directly to main
-- Van reviews the diff and merges manually
+## Session end — do this when the task is complete
+1. Stage all changes: `git add .`
+2. Commit with a clear message: `git commit -m "<type>: <short description>"`
+3. Append an entry to `CHANGELOG.md` (format below)
+4. Stage and commit the changelog: `git add CHANGELOG.md && git commit -m "docs: append changelog entry"`
+5. State the branch name and tell Van to review and merge
 
 ## Conventions
 - Plugins not in active use go to `lua/archive/` — not deleted
@@ -34,9 +39,10 @@ implemented and documented.
 - Full tier plugins: `lua/plugins/full/`
 - `init.lua` controls which tier loads — do not change tier-loading logic
   without explicit instruction
+- Never commit directly to main
 
 ## CHANGELOG.md format
-Each entry:
+Each entry must follow this structure exactly:
 \```
 ## YYYY-MM-DD — <short title>
 **Task:** What was asked
