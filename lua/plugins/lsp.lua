@@ -2,7 +2,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    version = "*",
+    version = "v2.5.0",
     event = "VeryLazy",
     config = function()
       -- Setup basic LSP signs and diagnostic behavior
