@@ -39,14 +39,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Markdown settings
-vim.api.nvim_create_augroup("_markdown", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-    group = "_markdown",
-    pattern = "markdown",
-    callback = function()
-        vim.opt_local.wrap = true
-    end,
-})
+-- vim.api.nvim_create_augroup("_markdown", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", {
+--     group = "_markdown",
+--     pattern = "markdown",
+--     callback = function()
+--         vim.opt_local.wrap = true
+--     end,
+-- })
 
 -- Auto resize
 vim.api.nvim_create_augroup("_auto_resize", { clear = true })
