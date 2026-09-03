@@ -3,6 +3,9 @@ require("default.keymaps")
 require("default.options")
 require("default.autocommands")
 
+-- load the local colorscheme from colors/gruvbox_dark.lua
+vim.cmd.colorscheme("gruvbox_dark")
+
 -- plugin manager load
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
