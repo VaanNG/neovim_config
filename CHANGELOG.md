@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-03 — Default to local Gruvbox Dark
+**Task:** Load the custom colorscheme in `colors/` by default
+**Changes:** Archived the Catppuccin plugin configuration and configured `init.lua` to load the local `gruvbox_dark` colorscheme before plugin initialization.
+**Notes:** The colorscheme applies to both minimal and full tiers and was verified with a headless Neovim launch.
+
 ## 2026-03-20
 
 ### Archived
