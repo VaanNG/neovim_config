@@ -1,3 +1,9 @@
+-- Add tree-sitter CLI to PATH (0.26.x needed for 'build' command)
+if vim.uv then
+    vim.env.PATH = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/bin" .. ":" .. vim.env.PATH
+    vim.env.PATH = vim.fn.expand("~/.local/bin") .. ":" .. vim.env.PATH
+end
+
 -- load default globals
 require("default.keymaps")
 require("default.options")
