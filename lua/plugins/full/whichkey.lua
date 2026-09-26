@@ -110,6 +110,11 @@ return {
             { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk", nowait = true, remap = false },
             { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk", nowait = true, remap = false },
             { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk", nowait = true, remap = false },
+            { "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", desc = "Stage Buffer", nowait = true, remap = false },
+            { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit", nowait = true, remap = false },
+            { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Diff Repo", nowait = true, remap = false },
+            { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History", nowait = true, remap = false },
+            { "<leader>gf", "<cmd>FzfLua git_status<cr>", desc = "Changed Files", nowait = true, remap = false },
 
             { "<leader>l", group = "LSP", nowait = true, remap = false },
             { "<leader>lI", "<cmd>LspInstallInfo<cr>", desc = "Installer Info", nowait = true, remap = false },

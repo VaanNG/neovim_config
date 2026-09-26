@@ -29,6 +29,11 @@
        * `nvim-web-devicons`
 * `gitsigns.nvim`
    * *Description*: Git integrations to buffers. (e.g. show line changed, blame, ..)
+* `neogit` (full tier)
+   * *Description*: Git interface inside nvim: status, staging, commit, push, rebase. Replaces gitui.
+   * *Dependencies*: 
+       * `plenary.nvim`: Lua utility library
+       * `diffview.nvim`: Repo-wide diffs and file history
 * `nvim-lspconfig`:
    * *Description*: LSP Configuration
    * *Dependencies*: 
