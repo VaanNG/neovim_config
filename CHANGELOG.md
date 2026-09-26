@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-26 — Read the shared gruvbox palette from dotfiles
+**Task:** Manage one colour palette across kitty, pi and Neovim
+**Changes:** `colors/gruvbox_dark.lua` now overrides its palette table with `~/.dotfiles/colors/gruvbox-dark` (or `$DOTFILES/colors/gruvbox-dark`) when that file exists. The file uses official gruvbox names; this colorscheme's light names are one step off, so a small map translates them. The built-in table stays as the fallback, so the minimal tier works on machines without the dotfiles.
+**Notes:** Verified with a dump of all 584 highlight groups: identical with the shared file, identical without it, and changing `light1` in the palette changes `Normal`. Palette changes apply on the next start or `:colorscheme gruvbox_dark`.
+
 ## 2026-09-26 — Add Neogit as in-editor git interface
 **Task:** Replace gitui with git tooling inside Neovim
 **Changes:** Added `lua/plugins/full/neogit.lua` (Neogit with plenary, diffview and the fzf-lua integration), loaded only on `:Neogit` / `:DiffviewOpen` / `:DiffviewFileHistory`. New which-key mappings in the Git group: `<leader>gg` Neogit, `<leader>gS` stage buffer, `<leader>gD` repo diff, `<leader>gh` current file history, `<leader>gf` fzf-lua changed files. Existing `<leader>g` mappings are unchanged. README plugin list updated.
