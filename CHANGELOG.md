@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-26 — Add Neogit as in-editor git interface
+**Task:** Replace gitui with git tooling inside Neovim
+**Changes:** Added `lua/plugins/full/neogit.lua` (Neogit with plenary, diffview and the fzf-lua integration), loaded only on `:Neogit` / `:DiffviewOpen` / `:DiffviewFileHistory`. New which-key mappings in the Git group: `<leader>gg` Neogit, `<leader>gS` stage buffer, `<leader>gD` repo diff, `<leader>gh` current file history, `<leader>gf` fzf-lua changed files. Existing `<leader>g` mappings are unchanged. README plugin list updated.
+**Notes:** Full tier only; verified the minimal tier does not load Neogit. `<leader>gu` still calls gitsigns `undo_stage_hunk()`, which newer gitsigns deprecates in favour of toggling with `stage_hunk()` (belongs to backlog item 3, keymap audit).
+
 ## 2026-09-03 — Default to local Gruvbox Dark
 **Task:** Load the custom colorscheme in `colors/` by default
 **Changes:** Archived the Catppuccin plugin configuration and configured `init.lua` to load the local `gruvbox_dark` colorscheme before plugin initialization.
