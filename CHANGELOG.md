@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-26 — Fix tree-sitter startup error on Neovim 0.12.5
+**Task:** Neovim failed at startup with `module 'nvim-treesitter.config' not found` after upgrading to 0.12.5
+**Changes:** The installed plugin was still the archived `master` branch; lazy.nvim only switches to `branch = "main"` on update, so `:Lazy update nvim-treesitter` fixed the error. `treesitter.lua` now sets `lazy = false` and `build = ":TSUpdate"` as the plugin README requires, skips parser install with a warning when the `tree-sitter` CLI is missing (so minimal-tier machines still start cleanly), and only sets the treesitter `indentexpr` when a parser started for the buffer.
+**Notes:** On every other machine run `:Lazy update nvim-treesitter` once and install `tree-sitter-cli` 0.26.1+ from the package manager (not npm) plus a C compiler, or parsers will not build. The `nvim-treesitter/bin` PATH entry in `init.lua` points to a directory the main branch does not have.
+
 ## 2026-09-03 — Default to local Gruvbox Dark
 **Task:** Load the custom colorscheme in `colors/` by default
 **Changes:** Archived the Catppuccin plugin configuration and configured `init.lua` to load the local `gruvbox_dark` colorscheme before plugin initialization.
