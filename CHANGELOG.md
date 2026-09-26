@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-26 — Add Neogit as in-editor git interface
+**Task:** Replace gitui with git tooling inside Neovim
+**Changes:** Added `lua/plugins/full/neogit.lua` (Neogit with plenary, diffview and the fzf-lua integration), loaded only on `:Neogit` / `:DiffviewOpen` / `:DiffviewFileHistory`. New which-key mappings in the Git group: `<leader>gg` Neogit, `<leader>gS` stage buffer, `<leader>gD` repo diff, `<leader>gh` current file history, `<leader>gf` fzf-lua changed files. Existing `<leader>g` mappings are unchanged. README plugin list updated.
+**Notes:** Full tier only; verified the minimal tier does not load Neogit. `<leader>gu` still calls gitsigns `undo_stage_hunk()`, which newer gitsigns deprecates in favour of toggling with `stage_hunk()` (belongs to backlog item 3, keymap audit).
+
 ## 2026-09-26 — Fix tree-sitter startup error on Neovim 0.12.5
 **Task:** Neovim failed at startup with `module 'nvim-treesitter.config' not found` after upgrading to 0.12.5
 **Changes:** The installed plugin was still the archived `master` branch; lazy.nvim only switches to `branch = "main"` on update, so `:Lazy update nvim-treesitter` fixed the error. `treesitter.lua` now sets `lazy = false` and `build = ":TSUpdate"` as the plugin README requires, skips parser install with a warning when the `tree-sitter` CLI is missing (so minimal-tier machines still start cleanly), and only sets the treesitter `indentexpr` when a parser started for the buffer.
