@@ -53,6 +53,30 @@ local p = {
     faded_orange = "#af3a03",
 }
 
+-- Shared palette from ~/.dotfiles/colors (also used by kitty and pi), if present.
+-- The table above stays as the fallback for machines without the dotfiles.
+local shared = (vim.env.DOTFILES or vim.fn.expand("~/.dotfiles")) .. "/colors/gruvbox-dark"
+if vim.fn.filereadable(shared) == 1 then
+    local s = {}
+    for _, line in ipairs(vim.fn.readfile(shared)) do
+        local name, hex = line:match("^([%w_]+)=(#%x+)$")
+        if name then
+            s[name] = hex
+        end
+    end
+    -- This file's light names sit one step off the official gruvbox names
+    local official = {
+        light0_hard = "light0",
+        light0 = "light1",
+        light1 = "light2",
+        light2 = "light3",
+        light3 = "light4"
+    }
+    for name in pairs(p) do
+        p[name] = s[official[name] or name] or p[name]
+    end
+end
+
 -----------------------------------------------------------------------------
 -- Options
 -----------------------------------------------------------------------------
